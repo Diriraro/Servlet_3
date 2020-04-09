@@ -10,6 +10,52 @@ import com.iu.util.DBConnect;
 public class PointDAO {
 	//DAO (Data Access Object)
 	
+	//5. UPDATE
+	public int pointMod(PointDTO pointDTO)throws Exception{
+		int result = 0;
+		Connection con = DBConnect.getConnect();
+		String sql = "UPDATE point SET name=?, kor=?, eng=?, math=?, total=?, avg=? WHERE num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, pointDTO.getName());
+		st.setInt(2, pointDTO.getKor());
+		st.setInt(3, pointDTO.getEng());
+		st.setInt(4, pointDTO.getMath());
+		st.setInt(5, pointDTO.getTotal());
+		st.setDouble(6, pointDTO.getAvg());
+		st.setInt(7, pointDTO.getNum());
+		
+		result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		return result;
+	}
+	
+	//4. Insert
+	public int pointAdd(PointDTO pointDTO)throws Exception{
+		int result=0;
+		Connection con = DBConnect.getConnect();
+		String sql = "INSERT INTO point VALUES(?,?,?,?,?,?,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, pointDTO.getName());
+		st.setInt(2, pointDTO.getNum());
+		st.setInt(3, pointDTO.getKor());
+		st.setInt(4, pointDTO.getEng());
+		st.setInt(5, pointDTO.getMath());
+		st.setInt(6, pointDTO.getTotal());
+		st.setDouble(7, pointDTO.getAvg());
+		
+		result = st.executeUpdate();
+		
+		st.close();
+		con.close();		
+		
+		return result;
+	}
+	
 	//3. Delete
 	public int pointDelete(int num)throws Exception{
 		int result=0;
