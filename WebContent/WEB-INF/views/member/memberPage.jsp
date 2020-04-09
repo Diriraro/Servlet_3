@@ -44,7 +44,6 @@
   </div>
 </nav>
 <!-- Nav -->
-
 <div class="container">
   <div class="jumbotron">
     <h1>Bootstrap Tutorial</h1>      
@@ -52,6 +51,35 @@
   </div>
 </div>
 
-	<h1>Add Point Branch</h1>
+<div class="container">
+	<div class="row">
+		
+		<table class="table table-hover">
+			<tr class="danger">
+				<td>ID</td>
+				<td>NAME</td>
+				<td>EMAIL</td>
+				<td>PHONE</td>
+				<td>AGE</td>
+			</tr>	
+			
+				<tr class="info">
+					<td>${member.id}</td>
+					<td>${member.name}</td>
+					<td>${member.email}</td>
+					<td>${member.phone}</td>
+					<td>${member.age}</td>
+				
+				</tr>
+		
+		</table>
+	<%-- 	
+		<a href="./pointMod?num=${dto.num}" class="btn btn-primary">Update</a>
+		<a href="./pointDelete?num=${dto.num}" class="btn btn-danger">Delete</a>
+			 --%>
+	</div>
+</div>
+
+
 </body>
 </html>

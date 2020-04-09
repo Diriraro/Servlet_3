@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- BootStrap API -->  
+<!-- BootStrap API --> 
 </head>
 <body>
 <!-- Nav -->
@@ -47,30 +47,47 @@
 
 <div class="container">
 	<div class="row">
-		<h1>Point List Page</h1>
-		
-		<table class="table table-hover">
-			<tr>
-				<td>번호</td>
-				<td>이름</td>
-				<td>평균</td>
-			</tr>	
-			
-			<c:forEach items="${list}" var="dto">
-				<tr>
-					<td>${dto.num}</td>
-					<td><a href="./pointSelect?num=${dto.num}">${dto.name}</a></td>
-					<td>${dto.avg}</td>
-				</tr>
-			</c:forEach>	
-		
-		</table>
-		
-		<a href="./pointAdd" class="btn btn-primary">Point Add</a>
-			
+		<form action="./memberJoin" method="post">
+    <div class="form-group">
+      <label for="ID">ID:</label>
+      <input type="text" class="form-control" id="id" placeholder="Enter ID" name="id">
+    </div>
+
+    <div class="form-group">
+      <label for="PW">Password:</label>
+      <input type="password" class="form-control" id="pw" placeholder="Enter PW" name="pw">
+    </div> 
+       
+<!--     <div class="form-group">
+      <label for="CPW">Confirm Password:</label>
+      <input type="password" class="form-control" id="cpw" placeholder="Enter Confirm Password" name="cpw">
+    </div>   -->
+    
+    <div class="form-group">
+      <label for="Name">Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+    </div>  
+    
+    <div class="form-group">
+      <label for="Email">Email:</label>
+      <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email">
+    </div>  
+    
+    <div class="form-group">
+      <label for="Phone">phone:</label>
+      <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone">
+    </div>          
+    
+    <div class="form-group">
+      <label for="Age">Age:</label>
+      <input type="text" class="form-control" id="age" placeholder="Enter age" name="age">
+    </div>                  
+   
+   <button type="submit" class="btn btn-default">Submit</button>
+   
+  </form>
 	</div>
 </div>
-
 
 </body>
 </html>
