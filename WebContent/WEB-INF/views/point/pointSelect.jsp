@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- BootStrap API -->  
+<!-- BootStrap API --> 
 </head>
 <body>
 <!-- Nav -->
@@ -44,6 +44,35 @@
   </div>
 </div>
 
-	<h1>Add Point Branch</h1>
+<div class="container">
+	<div class="row">
+		
+		<table class="table table-hover">
+			<tr class="danger">
+				<td>번호</td>
+				<td>이름</td>
+				<td>국어</td>
+				<td>영어</td>
+				<td>수학</td>
+				<td>총점</td>
+				<td>평균</td>
+			</tr>	
+			
+				<tr class="info">
+					<td>${dto.num}</td>
+					<td>${dto.name}</td>
+					<td>${dto.kor}</td>
+					<td>${dto.eng}</td>
+					<td>${dto.math}</td>
+					<td>${dto.total}</td>
+					<td>${dto.avg}</td>
+				</tr>
+		
+		</table>
+		
+		<a href="./pointDelete?num=${dto.num}" class="btn btn-danger">Delete</a>
+			
+	</div>
+</div>
 </body>
 </html>
