@@ -6,80 +6,54 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- BootStrap API -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- BootStrap API -->  
+
+<c:import url="../template/boot.jsp"></c:import>
 </head>
+
 <body>
-<!-- Nav -->
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="${pageContext.request.contextPath}">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
-        </ul>
-      </li>
-      <li><a href="${pageContext.request.contextPath}/point/pointList">Point</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-    	<c:if test="${empty member}">
-			<li><a href="${pageContext.request.contextPath}/member/memberJoin"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-			<li><a href="${pageContext.request.contextPath}/member/memberLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    	</c:if>
-    	
-		<c:if test="${not empty member}">
-			<li><a href="${pageContext.request.contextPath}/member/memberPage"><span class="glyphicon glyphicon-user"></span> My Page</a></li>
-			<li><a href="${pageContext.request.contextPath}/member/memberLogout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-		</c:if>
-    </ul>
-  </div>
-</nav>
-<!-- Nav -->
-<div class="container">
-  <div class="jumbotron">
-    <h1>Bootstrap Tutorial</h1>      
-    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
-  </div>
-</div>
+
+<c:import url="../template/header.jsp"></c:import>
 
 <div class="container">
 	<div class="row">
-		
-		<table class="table table-hover">
-			<tr class="danger">
-				<td>ID</td>
-				<td>NAME</td>
-				<td>EMAIL</td>
-				<td>PHONE</td>
-				<td>AGE</td>
-			</tr>	
-			
-				<tr class="info">
-					<td>${member.id}</td>
-					<td>${member.name}</td>
-					<td>${member.email}</td>
-					<td>${member.phone}</td>
-					<td>${member.age}</td>
-				
-				</tr>
-		
-		</table>
-	<%-- 	
-		<a href="./pointMod?num=${dto.num}" class="btn btn-primary">Update</a>
-		<a href="./pointDelete?num=${dto.num}" class="btn btn-danger">Delete</a>
-			 --%>
+	<h1>ID : ${sessionScope.member.id}</h1>
+	<h1>Name : ${member.name}</h1>
+	<h1>Email : ${member.email}</h1>
+	<h1>Phone : ${member.phone}</h1>
+	<h1>Age : ${member.age}</h1>
+	
+	<button class="btn btn-primary" id="upd">Update</button>
+	<button class="btn btn-danger" id="del">Delete</button>
 	</div>
 </div>
 
+<script type="text/javascript">
+	//js	document.getElementById
+	//js	document.quertSelector
+	//jquery $(선택자)
+
+	$("#del").click(function() {
+		var result = confirm("삭제?");
+		if(result){
+			location.href="./memberDelete";			
+		}
+	});
+	$("#upd").on("click", function() {
+		location.href = "./memberUpdate";
+	});
+	
+	/* $("#upd").click(function() {
+		var result = confirm("변경?");
+		if(result){
+			var pwp = prompt("비밀번호입력");
+			if(pwp=='${member.pw}'){
+			location.href="./memberUpdate";				
+			}else{
+				alert("비번틀림");
+			}
+		}
+	}); */
+</script>
 
 </body>
 </html>

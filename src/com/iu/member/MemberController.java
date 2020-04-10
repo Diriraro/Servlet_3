@@ -102,6 +102,47 @@ public class MemberController extends HttpServlet {
 			path="../WEB-INF/views/member/memberPage.jsp";
 			//HttpSession session = request.getSession();
 			
+		}else if(command.equals("/memberDelete")) {
+			HttpSession session = request.getSession();
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+			
+			int result = memberService.memberDelete(memberDTO);			
+			if(result>0) {
+				session.invalidate();
+			}
+			
+			check=false;
+			path="../";
+			
+		}else if(command.equals("/memberUpdate")) {
+			
+			if(method.equals("POST")) {
+				HttpSession session = request.getSession();
+				
+				MemberDTO memberDTO = new MemberDTO();
+				memberDTO.setId(request.getParameter("id"));
+				memberDTO.setName(request.getParameter("name"));
+				memberDTO.setEmail(request.getParameter("email"));
+				memberDTO.setPhone(request.getParameter("phone"));
+				memberDTO.setAge(Integer.parseInt(request.getParameter("age")));
+				
+				int result = memberService.memberUpdate(memberDTO);
+//				String msg = "수정 실패";
+				if(result>0) {
+//				msg = "수정 성공";
+				session.setAttribute("member",	memberDTO);
+				}
+				
+				check=false;
+				path="../";				
+//				request.setAttribute("path", "./memberPage");
+//				request.setAttribute("result", msg);
+//				
+//				path="../WEB-INF/views/common/result.jsp";
+				
+			}else {
+				path="../WEB-INF/views/member/memberUpdate.jsp";
+			}
 		}
 		
 		} catch (Exception e) {
