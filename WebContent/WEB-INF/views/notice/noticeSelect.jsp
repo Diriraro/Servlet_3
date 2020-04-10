@@ -33,10 +33,10 @@
 				</div>
 
 			</div>
-
+		<c:if test="${member.id eq 'admin'}">	
 		<a href="./noticeMod?no=${dto.no}" class="btn btn-primary">Update</a>
 		<button id="del" class="btn btn-danger">Delete</button>
-
+		</c:if>
 
 		</div>
 	</div>
